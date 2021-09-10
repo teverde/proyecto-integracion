@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div style="border: 2px solid #000;">
+    <h1>Índice de Ciudades</h1>
+    <p>Selecciona una ciudad para más información</p>
+    <ul>  
+      {% for city,id in cities %}
+        <li>
+          <a href='home' data-value={{id}}>{{city}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

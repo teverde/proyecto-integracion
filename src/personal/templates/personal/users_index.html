@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="border: 2px solid #000;">
+  <h1>Índice de Usuarios</h1>
+  <p>Selecciona un usuario para más información</p>
+    <ul>  
+      {% for user,id in users %}
+        <li>
+
+          <a href='home' data-value={{id}}>{{user}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

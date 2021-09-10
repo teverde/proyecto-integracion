@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div style="border: 2px solid #000;">
+    <h1>Home Page</h1>
+    <p>Selecciona la información a consultar</p>
+      <button>
+        <a href="{% url 'users' %}">Usuarios</a>
+      </button>
+      <button>
+        <a href="{% url 'cities' %}">Ciudades</a>
+      </button>
+        
+  </div>
+{% endblock content %}
