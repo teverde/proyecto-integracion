@@ -7,7 +7,7 @@
     <ul>  
       {% for city,id in cities %}
         <li>
-          <a href='home' data-value={{id}}>{{city}}</a>
+          <a href="{% url 'city' id %}">{{city}}</a>
         </li>
       {% endfor %}
     </ul>

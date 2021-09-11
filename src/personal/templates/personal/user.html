@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="border: 2px solid #000;">
+  <h4>Tarjeta(s) de crédito:</h4>
+  {% for card, cvv in credit_cards %}
+    <p>Número de tarjeta: {{card}}</p>
+    <p>CVV: {{cvv}}</p>
+  {% endfor %}
+  <h4>Direcciones:</h4>
+  {% for address,id,city,country in addresses %}
+    <p>Dirección: {{address}}</p>
+    <p>Ciudad: {{city}}</p>
+    <p>País: {{country}}</p>
+    </div>
+  {% endfor %}
 {% endblock content %}

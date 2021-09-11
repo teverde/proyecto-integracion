@@ -8,7 +8,7 @@
       {% for user,id in users %}
         <li>
 
-          <a href='home' data-value={{id}}>{{user}}</a>
+          <a href="{% url 'user' id %}">{{user}}</a>
         </li>
       {% endfor %}
     </ul>

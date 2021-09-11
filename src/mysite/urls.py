@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from personal.views import (
     home_screen_view,
     users_index_view,
@@ -29,5 +32,5 @@ urlpatterns = [
     path('users/', users_index_view, name="users"),
     path('cities/', cities_index_view, name="cities"),
     path('users/<int:id>/', user_view, name="user"),
-    path('cities/<int:id>/', city_view, name="city"),
-]
+    path('cities?q=<str:id>/', city_view, name="city"),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

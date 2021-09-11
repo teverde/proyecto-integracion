@@ -21,7 +21,7 @@ def users_index_view(request):
 
 def cities_index_view(request):
   content = []
-  for i in range (1,9):
+  for i in range (1,5):
     response = requests.get(f'{url}/cities?_page={i}')
     for city in response.json():
       content.append([city["name"], city["id"]])
@@ -31,14 +31,31 @@ def cities_index_view(request):
   }
   return render(request, "personal/cities_index.html", context)
 
-def user_view(request):
-  context ={
+def user_view(request, id):
+  credit_cards = []
+  addresses = []
+  response_credit = requests.get(f'{url}/users/{id}/credit-cards')
+  response_address = requests.get(f'{url}/users/{id}/addresses')
 
+  for card in response_credit.json():
+    credit_cards.append([card['creditCard'],card['CVV']])
+  for address in response_address.json():
+    addresses.append([address['address'],address['city']['id'],address['city']['name'],address['city']['country']])
+
+  context ={
+    'credit_cards': credit_cards,
+    'addresses': addresses,
   }
   return render(request, "personal/user.html", context)
 
-def city_view(request):
-  context ={
-    
+def city_view(request, id):
+  response = requests.get(f'{url}/cities?q={id}')
+  content = response.json()[0]
+
+  context = {
+    'name': content['name'],
+    'country': content['country'],
+    'users': content['users']
   }
+  
   return render(request, "personal/city.html", context)

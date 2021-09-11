@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="border: 2px solid #000;">
+<p>Ciudad: {{name}}</p>
+<p>País: {{country}}</p>
+{% for user in users %}
+  <p>Usuario: {{user}}</p>
+{% endfor %}
+</div>
 {% endblock content %}
